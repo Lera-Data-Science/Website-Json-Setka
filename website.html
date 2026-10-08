@@ -1,0 +1,995 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+
+body{
+font-family:'Darker Grotesque', sans-serif;
+background:var(--paper);
+color:var(--ink);
+font-weight:500;
+font-size:18px;
+line-height:1.6;
+-webkit-font-smoothing:antialiased;
+}
+
+@media (prefers-reduced-motion: reduce){
+html{scroll-behavior:auto;}
+*{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+img{max-width:100%;display:block;}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:max(var(--pad),env(safe-area-inset-left));padding-right:max(var(--pad),env(safe-area-inset-right));}
+
+h1,h2,h3,h4{
+font-weight:800;
+line-height:0.94;
+letter-spacing:-0.01em;
+}
+
+.eyebrow{
+display:inline-flex;
+align-items:center;
+gap:8px;
+font-size:15px;
+font-weight:700;
+color:var(--pink);
+margin-bottom:14px;
+}
+
+.eyebrow .dot{width:9px;height:9px;background:var(--lime);flex:none;}
+
+section{position:relative;}
+
+/* ---------- pixel mark ---------- */
+.mark{display:inline-block;line-height:0;}
+.mark svg{display:block;}
+
+/* ---------- button ---------- */
+.btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:15px 30px;
+font-family:inherit;
+font-weight:700;
+font-size:19px;
+border:2px solid var(--ink);
+background:transparent;
+color:var(--ink);
+cursor:pointer;
+transition:background .18s ease, color .18s ease, transform .12s ease;
+clip-path:polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+.btn:hover{transform:translate(-1px,-1px);}
+.btn:active{transform:translate(0,0);}
+.btn-solid{
+background:var(--lime);
+border-color:var(--lime);
+color:var(--ink);
+}
+.btn-solid:hover{background:var(--ink);border-color:var(--ink);color:var(--lime);}
+.btn-ghost-light{
+border-color:var(--paper);
+color:var(--paper);
+}
+.btn-ghost-light:hover{background:var(--paper);color:var(--ink);}
+.btn-pink{
+background:var(--pink);
+border-color:var(--pink);
+color:var(--ink);
+}
+.btn-pink:hover{background:var(--ink);border-color:var(--pink);color:var(--pink);}
+
+/* ---------- nav ---------- */
+header{
+position:sticky;top:0;z-index:100;
+background:rgba(36,36,36,0.92);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);
+}
+.navrow{
+display:flex;align-items:center;justify-content:space-between;
+height:76px;
+}
+.brand{
+display:flex;align-items:center;gap:10px;
+color:var(--paper);
+font-size:24px;font-weight:800;
+}
+.navlinks{
+display:flex;align-items:center;gap:36px;
+}
+.navlinks a{
+color:var(--paper);
+font-size:17px;
+font-weight:600;
+position:relative;
+padding:6px 0;
+}
+.navlinks a::after{
+content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+background:var(--lime);transition:width .2s ease;
+}
+.navlinks a:hover::after{width:100%;}
+.nav-cta{display:none;}
+@media (min-width:1000px){.nav-cta{display:inline-flex;}}
+.navlinks{display:none;}
+@media (min-width:1000px){.navlinks{display:flex;}}
+.burger{
+display:flex;flex-direction:column;gap:5px;
+background:none;border:none;cursor:pointer;padding:8px;
+}
+@media (min-width:1000px){.burger{display:none;}}
+.burger span{width:26px;height:2px;background:var(--paper);display:block;}
+.mobile-menu{
+display:none;flex-direction:column;
+background:var(--ink);border-top:1px solid var(--line);
+padding:20px var(--pad) 30px;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+color:var(--paper);font-size:22px;font-weight:700;padding:12px 0;
+border-bottom:1px solid var(--line);
+}
+.mobile-menu .btn{margin-top:20px;align-self:flex-start;}
+
+/* ---------- HERO ---------- */
+.hero {
+background: var(--ink);
+color: var(--paper);
+padding: 60px 0 90px;
+overflow: hidden;
+position: relative;
+}
+
+.hero-wrap {
+display: grid;
+grid-template-columns: 1fr;
+gap: 40px;
+align-items: center;
+position: relative;
+}
+
+@media (min-width: 1024px) {
+.hero-wrap {
+grid-template-columns: 1.15fr 0.85fr;
+gap: 20px;
+}
+}
+
+.hero-copy {
+position: relative;
+z-index: 2;
+max-width: 780px;
+}
+
+.hero-kicker {
+font-size: 20px;
+font-weight: 700;
+color: var(--lime);
+margin-bottom: 22px;
+letter-spacing: 0.01em;
+display: flex;
+align-items: center;
+gap: 12px;
+flex-wrap: wrap;
+}
+
+.hero h1 {
+font-size: clamp(38px, 5.5vw, 86px);
+font-weight: 800;
+line-height: 1.02;
+position: relative;
+margin-bottom: 24px;
+}
+
+.hero h1 em {
+font-style: normal;
+color: var(--pink);
+}
+
+/* Pozycjonowanie tagów na nakładkach */
+.tag-overlay {
+position: absolute;
+font-size: 14px;
+font-weight: 700;
+padding: 4px 10px;
+color: var(--ink);
+white-space: nowrap;
+z-index: 3;
+pointer-events: none;
+box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.tag-overlay.lime { background: var(--lime); }
+.tag-overlay.pink { background: var(--pink); }
+
+/* Dopasowanie miejsca z Twojego zrzutu (Desktop) */
+@media (min-width: 900px) {
+.tag-attribution {
+top: -12px;
+left: 40px;
+}
+.tag-analytics {
+top: -28px;
+left: 420px;
+}
+.tag-predictive {
+top: 36px;
+left: -15px;
+}
+.tag-econometrics {
+bottom: 95px;
+left: 230px;
+}
+}
+
+/* Tagi po prawej stronie */
+.hero-side-tags {
+position: relative;
+min-height: 260px;
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+align-content: center;
+}
+
+@media (min-width: 1024px) {
+.hero-side-tags {
+min-height: 380px;
+}
+.tag-side {
+position: absolute;
+}
+.tag-dashboards { top: 10%; left: 10%; }
+.tag-realtime   { top: 5%; right: 15%; }
+.tag-datasync   { top: 40%; right: 5%; }
+.tag-pipelines  { top: 55%; left: 40%; }
+.tag-bigquery   { bottom: 15%; right: 25%; }
+.tag-funnel     { bottom: 10%; left: 15%; }
+}
+
+@media (max-width: 899px) {
+.tag-overlay {
+position: relative;
+top: auto !important;
+left: auto !important;
+bottom: auto !important;
+right: auto !important;
+display: inline-block;
+margin: 4px;
+}
+.hero-tags-inline {
+margin-bottom: 16px;
+}
+}
+
+.hero-desc {
+margin-top: 24px;
+max-width: 560px;
+font-size: 20px;
+font-weight: 500;
+color: rgba(246, 246, 246, 0.85);
+}
+
+.hero-ctas {
+margin-top: 36px;
+display: flex;
+flex-wrap: wrap;
+gap: 16px;
+}
+
+/* ---------- section shells ---------- */
+.section{
+padding:110px 0;
+border-bottom:1px solid var(--line-strong);
+}
+.section.dark{
+background:var(--ink);color:var(--paper);
+border-bottom-color:var(--line);
+}
+.section-head{
+display:flex;
+flex-wrap:wrap;
+justify-content:space-between;
+align-items:flex-end;
+gap:24px;
+margin-bottom:64px;
+}
+.section-head h2{
+font-size:clamp(34px, 4.4vw, 58px);
+max-width:14ch;
+}
+.section-head p{
+max-width:36ch;
+font-size:19px;
+font-weight:500;
+color:#565656;
+}
+.section.dark .section-head p{color:rgba(246,246,246,0.7);}
+
+/* ---------- services ---------- */
+.service{
+display:grid;
+grid-template-columns: 100px 1fr auto;
+gap:24px;
+align-items:start;
+padding:34px 0;
+border-top:2px solid var(--ink);
+cursor:pointer;
+transition:background .16s ease;
+}
+.service:last-child{border-bottom:2px solid var(--ink);}
+.service:hover{background:var(--paper-dim);}
+.service-num{
+font-size:44px;font-weight:800;color:var(--pink);
+line-height:1;
+}
+.service-title{
+font-size:clamp(24px,2.8vw,34px);
+font-weight:800;
+margin-bottom:8px;
+}
+.service-body{
+max-width:640px;
+font-size:18px;
+font-weight:500;
+color:#4a4a4a;
+display:grid;
+grid-template-rows:0fr;
+transition:grid-template-rows .28s ease;
+}
+.service.open .service-body{grid-template-rows:1fr;margin-top:14px;}
+.service-body-inner{overflow:hidden;}
+.service-more{
+align-self:center;
+font-weight:700;
+font-size:16px;
+display:flex;align-items:center;gap:8px;
+color:var(--ink);
+white-space:nowrap;
+}
+.service-more .plus{
+width:26px;height:26px;border:2px solid var(--ink);
+display:flex;align-items:center;justify-content:center;
+font-size:18px;font-weight:800;
+flex:none;
+transition:transform .2s ease, background .2s ease;
+}
+.service.open .service-more .plus{background:var(--lime);transform:rotate(45deg);}
+
+/* ---------- szkolenia ---------- */
+.train-grid{
+display:grid;
+grid-template-columns: 1.1fr 1fr;
+gap:70px;
+}
+@media (max-width:860px){.train-grid{grid-template-columns:1fr;}}
+.train-list{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:0;
+border-top:2px solid var(--ink);
+border-left:2px solid var(--ink);
+}
+.train-list li{
+border-right:2px solid var(--ink);
+border-bottom:2px solid var(--ink);
+padding:20px 18px;
+font-size:18px;
+font-weight:600;
+}
+.train-modes{display:flex;flex-wrap:wrap;gap:14px;margin:34px 0;}
+.mode{
+padding:12px 22px;
+border:2px solid var(--ink);
+background:transparent;
+color:var(--ink);
+font-family:inherit;
+font-weight:700;
+font-size:17px;
+cursor:pointer;
+transition:background .16s ease, color .16s ease;
+}
+.mode:hover{background:var(--paper-dim);}
+.mode.active,.mode.active:hover{background:var(--ink);color:var(--lime);}
+.mode-desc{
+margin:-12px 0 30px;
+max-width:46ch;
+font-size:18px;
+color:#4a4a4a;
+}
+.mode-desc[hidden]{display:none;}
+.btn-sm{padding:11px 20px;font-size:17px;}
+.pkg-head{
+margin-top:80px;
+margin-bottom:28px;
+display:flex;flex-wrap:wrap;
+justify-content:space-between;align-items:flex-end;gap:12px 40px;
+}
+.pkg-head h3{font-size:clamp(28px,3.4vw,44px);}
+.pkg-head p{font-size:18px;color:#4a4a4a;max-width:48ch;}
+.pkg-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+align-items:start;
+}
+@media (max-width:900px){.pkg-grid{grid-template-columns:1fr;}}
+.pkg{
+border:2px solid var(--ink);
+background:var(--paper);
+color:var(--ink);
+padding:28px 24px;
+display:flex;flex-direction:column;gap:14px;
+animation:pkgIn .35s ease both;
+}
+.pkg.adv{background:var(--lime);}
+.pkg.prem{background:var(--ink);color:var(--paper);}
+@keyframes pkgIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.pkg-level{font-size:15px;font-weight:700;color:var(--pink);}
+.pkg.adv .pkg-level{color:var(--ink);}
+.pkg h4{font-size:38px;font-weight:800;}
+.pkg-desc{font-size:18px;line-height:1.35;}
+.pkg ul{margin:6px 0 8px;}
+.pkg li{
+padding:10px 0;
+border-top:1px solid var(--line-strong);
+font-size:17px;font-weight:600;line-height:1.3;
+display:flex;gap:12px;
+}
+.pkg li::before{content:"";width:9px;height:9px;background:var(--pink);margin-top:7px;flex:none;}
+.pkg.adv li::before{background:var(--ink);}
+.pkg.prem li{border-top-color:var(--line);}
+.pkg .btn{align-self:flex-start;}
+.price-panel{
+display:grid;
+grid-template-rows:0fr;
+transition:grid-template-rows .28s ease;
+}
+.price-panel.open{grid-template-rows:1fr;}
+.price-panel-inner{overflow:hidden;}
+.price-box{
+margin-top:4px;
+padding:18px 20px;
+background:var(--lime);
+color:var(--ink);
+border:2px solid var(--ink);
+}
+.pkg.adv .price-box{background:var(--paper);}
+.price-box .price-label{font-size:15px;font-weight:700;}
+.price-box .price-value{font-size:30px;font-weight:800;line-height:1.1;margin-top:2px;}
+.price-box .price-note{font-size:15px;margin-top:6px;color:#3a3a3a;}
+
+/* ---------- konsultacje ---------- */
+.consult-wrap{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:70px;
+align-items:start;
+}
+@media (max-width:860px){.consult-wrap{grid-template-columns:1fr;}}
+.consult-areas{
+display:grid;
+gap:0;
+}
+.consult-areas li{
+padding:16px 0;
+border-bottom:1px solid var(--line);
+font-size:19px;
+font-weight:600;
+color:rgba(246,246,246,0.88);
+display:flex;
+align-items:center;
+gap:14px;
+}
+.consult-areas li::before{
+content:"";width:10px;height:10px;background:var(--pink);flex:none;
+}
+
+/* ---------- ux/ui ---------- */
+.ux-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:2px;
+background:var(--ink);
+border:2px solid var(--ink);
+}
+@media (max-width:900px){.ux-grid{grid-template-columns:repeat(2,1fr);}}
+.ux-cell{
+background:var(--paper);
+padding:30px 22px;
+min-height:150px;
+display:flex;
+align-items:flex-end;
+font-size:20px;
+font-weight:700;
+}
+.ux-cell:nth-child(3n+1){background:var(--lime);}
+.ux-cell:nth-child(5n+2){background:var(--pink);color:var(--paper);}
+
+/* ---------- materiały ---------- */
+.res-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:1px;
+background:var(--line-strong);
+border:1px solid var(--line-strong);
+}
+@media (max-width:900px){.res-grid{grid-template-columns:repeat(2,1fr);}}
+.res-cell{
+background:var(--paper);
+padding:28px 20px;
+font-size:18px;
+font-weight:700;
+min-height:96px;
+display:flex;
+align-items:center;
+}
+
+/* ---------- dlaczego ja ---------- */
+.about-wrap{
+display:grid;
+grid-template-columns:1fr 1.15fr;
+gap:70px;
+align-items:center;
+}
+@media (max-width:900px){.about-wrap{grid-template-columns:1fr;}}
+.photo-frame{
+aspect-ratio:4/5;
+background:var(--ink);
+position:relative;
+clip-path:polygon(0 0, calc(100% - 42px) 0, 100% 42px, 100% 100%, 0 100%);
+display:flex;
+align-items:center;justify-content:center;
+color:rgba(246,246,246,0.5);
+text-align:center;
+padding:30px;
+}
+.photo-frame::before{
+content:"";
+position:absolute;inset:16px;
+border:1px solid rgba(246,246,246,0.25);
+}
+.photo-frame .ph-label{
+font-size:17px;font-weight:700;
+color:var(--lime);
+}
+.photo-frame .ph-sub{
+font-size:15px;font-weight:500;
+margin-top:8px;
+color:rgba(246,246,246,0.55);
+}
+.about-points{
+display:grid;gap:0;
+margin-top:30px;
+}
+.about-points li{
+padding:16px 0;
+border-top:1px solid var(--line-strong);
+font-size:18px;font-weight:600;
+display:flex;gap:14px;
+}
+.about-points li:last-child{border-bottom:1px solid var(--line-strong);}
+.about-points li::before{
+content:"";width:9px;height:9px;background:var(--pink);margin-top:9px;flex:none;
+}
+
+/* ---------- proces ---------- */
+.steps{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:2px;
+background:var(--ink);
+border:2px solid var(--ink);
+}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;}}
+.step{
+background:var(--lime);
+color:var(--ink);
+padding:34px 26px;
+min-height:220px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+.step-num{font-size:40px;font-weight:800;}
+.step-title{font-size:22px;font-weight:800;margin-top:20px;}
+
+/* ---------- dla kogo ---------- */
+.who-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+}
+@media (max-width:900px){.who-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:560px){.who-grid{grid-template-columns:1fr;}}
+.who-card{
+border:2px solid var(--ink);
+padding:28px 22px;
+min-height:200px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+transition:background .18s ease, color .18s ease;
+}
+.who-card:hover{background:var(--ink);color:var(--paper);}
+.who-card h3{font-size:24px;font-weight:800;}
+.who-card p{font-size:16px;font-weight:500;margin-top:16px;color:#5c5c5c;}
+.who-card:hover p{color:rgba(246,246,246,0.75);}
+
+/* ---------- final cta ---------- */
+.final{
+background:var(--ink);
+color:var(--paper);
+padding:130px 0;
+position:relative;
+overflow:hidden;
+text-align:center;
+}
+.final::before{
+content:"";
+position:absolute;
+left:50%;top:50%;
+width:900px;height:900px;
+background:radial-gradient(circle, rgba(204,255,0,0.14), transparent 60%);
+transform:translate(-50%,-50%);
+pointer-events:none;
+}
+.final-inner{position:relative;z-index:2;max-width:820px;margin:0 auto;}
+.final h2{
+font-size:clamp(36px,5.4vw,68px);
+}
+.final h2 .hl{color:var(--lime);}
+.final p{
+margin-top:22px;
+font-size:20px;font-weight:500;
+color:rgba(246,246,246,0.78);
+}
+.final .btn{margin-top:40px;}
+
+/* ---------- footer ---------- */
+footer{
+background:var(--ink-2);
+color:rgba(246,246,246,0.72);
+padding:80px 0 34px;
+}
+.foot-grid{
+display:grid;
+grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;
+gap:40px;
+padding-bottom:60px;
+border-bottom:1px solid var(--line);
+}
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;}}
+.foot-brand{
+color:var(--paper);
+font-size:26px;font-weight:800;
+display:flex;align-items:center;gap:10px;
+}
+.foot-brand-desc{
+margin-top:16px;font-size:16px;max-width:32ch;
+}
+.foot-col h4{
+color:var(--paper);
+font-size:16px;font-weight:700;
+margin-bottom:16px;
+}
+.foot-col a, .foot-col span{
+display:block;
+font-size:16px;
+padding:6px 0;
+}
+.foot-col a:hover{color:var(--lime);}
+.foot-bottom{
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:12px;
+padding-top:26px;
+font-size:14px;
+}
+
+/* ---------- responsive global ---------- */
+@media (min-width:1700px){
+:root{--maxw:1480px;}
+body{font-size:19px;}
+}
+@media (max-width:900px){
+.section{padding:72px 0;}
+.section-head{margin-bottom:40px;}
+.final{padding:90px 0;}
+.photo-frame{max-width:420px;}
+.pkg-head{margin-top:56px;}
+}
+@media (max-width:700px){
+body{font-size:17px;}
+.navrow{height:64px;}
+.service{grid-template-columns:44px 1fr;gap:6px 14px;padding:24px 0;}
+.service-num{font-size:30px;}
+.service-more{grid-column:2;align-self:start;font-size:15px;}
+.train-list{grid-template-columns:1fr;}
+.train-list li[style]{grid-column:auto !important;}
+.hero-ctas .btn{width:100%;justify-content:center;}
+.btn{padding:14px 22px;font-size:18px;}
+.btn-sm{padding:11px 18px;font-size:17px;}
+.step{min-height:150px;padding:26px 20px;}
+.ux-cell{min-height:110px;padding:22px 16px;font-size:18px;}
+.res-cell{min-height:80px;padding:20px 16px;}
+.consult-areas li{font-size:18px;}
+.final::before{width:520px;height:520px;}
+}
+@media (max-width:560px){
+.steps{grid-template-columns:1fr;}
+.foot-grid{grid-template-columns:1fr;gap:28px;}
+}
+@media (hover:none){
+.service:hover{background:transparent;}
+.who-card:hover{background:transparent;color:inherit;}
+.who-card:hover p{color:#5c5c5c;}
+.btn:hover{transform:none;}
+}
+
+/* utility */
+.center{text-align:center;}
+::selection{background:var(--lime);color:var(--ink);}
+
+
+<nav class="navlinks">
+  <a href="#uslugi">Usługi</a>
+  <a href="#szkolenia">Szkolenia</a>
+  <a href="#materialy">Materiały</a>
+  <a href="#o-mnie">O mnie</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<a href="#kontakt" class="btn btn-solid nav-cta">Umów konsultację</a>
+
+<button class="burger" id="burgerBtn" aria-label="Otwórz menu">
+  <span></span><span></span><span></span>
+</button>
+
+
+<div class="hero-copy">
+  <!-- Tagi inline/nakładki -->
+  <div class="hero-tags-inline" aria-hidden="true">
+    <span class="tag-overlay pink tag-attribution">Attribution</span>
+    <span class="tag-overlay lime tag-analytics">Analytics</span>
+    <span class="tag-overlay lime tag-predictive">Predictive Models</span>
+    <span class="tag-overlay pink tag-econometrics">Econometrics</span>
+  </div>
+
+  <p class="hero-kicker">
+    Szkolenia • Konsultacje • Audyty • Wdrożenia
+  </p>
+
+  <h1>
+    Analityka, ecommerce i UX, które pomagają podejmować <em>lepsze decyzje</em>.
+  </h1>
+
+  <p class="hero-desc">
+    Pomagam zespołom i właścicielom ecommerce lepiej wykorzystywać dane, poprawiać doświadczenie użytkownika i budować skuteczniejsze procesy analityczne.
+  </p>
+
+  <div class="hero-ctas">
+    <a href="#kontakt" class="btn btn-solid">Umów konsultację</a>
+    <a href="#uslugi" class="btn btn-ghost-light">Zobacz usługi</a>
+  </div>
+</div>
+
+<!-- Kafelki rozrzucone po prawej stronie -->
+<div class="hero-side-tags" aria-hidden="true">
+  <span class="tag-overlay lime tag-side tag-dashboards">Dashboards</span>
+  <span class="tag-overlay pink tag-side tag-realtime">Real-Time Metrics</span>
+  <span class="tag-overlay pink tag-side tag-datasync">Data Sync</span>
+  <span class="tag-overlay lime tag-side tag-pipelines">Data Pipelines</span>
+  <span class="tag-overlay pink tag-side tag-bigquery">BigQuery</span>
+  <span class="tag-overlay lime tag-side tag-funnel">Funnel Analysis</span>
+</div>
+
+
+<div class="services">
+  <div class="service" data-svc>
+    <div class="service-num">01</div>
+    <div>
+      <div class="service-title">Szkolenia indywidualne</div>
+      <div class="service-body"><div class="service-body-inner">Praktyczne szkolenia dopasowane do poziomu i potrzeb uczestnika. Tematy m.in. GA4, GTM, ecommerce analytics, BigQuery, analityka marketingowa, UX/UI.</div></div>
+    </div>
+    <div class="service-more"><span class="plus">+</span> Dowiedz się więcej</div>
+  </div>
+
+  <div class="service" data-svc>
+    <div class="service-num">02</div>
+    <div>
+      <div class="service-title">Szkolenia grupowe</div>
+      <div class="service-body"><div class="service-body-inner">Warsztaty dla zespołów marketingowych, ecommerce, analitycznych i produktowych. Praktyka zamiast samej teorii.</div></div>
+    </div>
+    <div class="service-more"><span class="plus">+</span> Dowiedz się więcej</div>
+  </div>
+
+  <div class="service" data-svc>
+    <div class="service-num">03</div>
+    <div>
+      <div class="service-title">Konsultacje analityczne</div>
+      <div class="service-body"><div class="service-body-inner">Pomoc w uporządkowaniu analityki, interpretacji danych, projektowaniu pomiaru i podejmowaniu decyzji na podstawie danych.</div></div>
+    </div>
+    <div class="service-more"><span class="plus">+</span> Dowiedz się więcej</div>
+  </div>
+
+  <div class="service" data-svc>
+    <div class="service-num">04</div>
+    <div>
+      <div class="service-title">Analizy UX/UI</div>
+      <div class="service-body"><div class="service-body-inner">Analiza zachowania użytkowników, lejków, ścieżek zakupowych i problemów z konwersją. Połączenie danych ilościowych i jakościowych.</div></div>
+    </div>
+    <div class="service-more"><span class="plus">+</span> Dowiedz się więcej</div>
+  </div>
+
+  <div class="service" data-svc>
+    <div class="service-num">05</div>
+    <div>
+      <div class="service-title">Wdrożenia ecommerce &amp; analytics</div>
+      <div class="service-body"><div class="service-body-inner">GA4, GTM, DataLayer, ecommerce tracking, Consent Mode, server-side tracking, integracje danych i uporządkowanie całego ekosystemu analitycznego.</div></div>
+    </div>
+    <div class="service-more"><span class="plus">+</span> Dowiedz się więcej</div>
+  </div>
+</div>
+
+
+    <div class="train-modes" role="tablist">
+      <button type="button" class="mode active" data-mode="solo" role="tab" aria-selected="true">1:1</button>
+      <button type="button" class="mode" data-mode="team" role="tab" aria-selected="false">Dla zespołów</button>
+    </div>
+
+    <p class="mode-desc" id="desc-solo">Szkolenie indywidualne, w którym pracujemy w Twoim tempie i na Twoich danych. Program dopasowuję do Twojego poziomu i celów — od podstaw GA4 po zaawansowaną analizę w BigQuery.</p>
+    <p class="mode-desc" id="desc-team" hidden>Warsztat dla całego zespołu marketingu, ecommerce, analityki lub produktu. Pracujemy na realnych problemach firmy, tak aby zespół wyszedł z gotowymi rozwiązaniami i wspólnym językiem pracy z danymi.</p>
+  </div>
+
+  <ul class="train-list">
+    <li>GA4 od podstaw do zaawansowanej analizy</li>
+    <li>Google Tag Manager</li>
+    <li>Ecommerce Analytics</li>
+    <li>BigQuery &amp; SQL</li>
+    <li>DataLayer i tracking</li>
+    <li>Analityka marketingowa</li>
+    <li>UX Analytics</li>
+    <li>A/B testing</li>
+    <li style="grid-column:1/-1;">Interpretacja danych i budowanie rekomendacji</li>
+  </ul>
+</div>
+
+<div class="pkg-head">
+  <h3 id="pkgTitle"></h3>
+  <p id="pkgLead"></p>
+</div>
+<div class="pkg-grid" id="pkgGrid"></div>
+
+
+  <ul class="consult-areas">
+    <li>Audyt analityki</li>
+    <li>Problemy z GA4</li>
+    <li>Problemy z trackingiem ecommerce</li>
+    <li>GTM i DataLayer</li>
+    <li>Interpretacja danych</li>
+    <li>Analiza lejka sprzedażowego</li>
+    <li>Spadek konwersji</li>
+    <li>Przygotowanie planu pomiarowego</li>
+    <li>Organizacja ekosystemu danych</li>
+  </ul>
+</div>
+
+
+<div class="ux-grid">
+  <div class="ux-cell">Customer journey</div>
+  <div class="ux-cell">Conversion funnel</div>
+  <div class="ux-cell">Rage clicks</div>
+  <div class="ux-cell">Scroll depth</div>
+  <div class="ux-cell">Session recordings</div>
+  <div class="ux-cell">Heatmaps</div>
+  <div class="ux-cell">Checkout analysis</div>
+  <div class="ux-cell">Product page analysis</div>
+</div>
+
+
+<div class="res-grid">
+  <div class="res-cell">Checklisty</div>
+  <div class="res-cell">Poradniki</div>
+  <div class="res-cell">Materiały edukacyjne</div>
+  <div class="res-cell">Template'y</div>
+  <div class="res-cell">Case studies</div>
+  <div class="res-cell">Materiały GA4 / GTM</div>
+  <div class="res-cell">Ecommerce analytics</div>
+  <div class="res-cell">UX/UI</div>
+</div>
+
+
+  <div>
+    <div class="eyebrow"><span class="dot"></span>Dlaczego ja?</div>
+    <h2 style="font-size:clamp(32px,4vw,52px); max-width:16ch;">Łączę dane, technologię i doświadczenie użytkownika.</h2>
+
+    <ul class="about-points">
+      <li>Wieloletnie doświadczenie w ecommerce i digital analytics</li>
+      <li>Praktyczna znajomość GA4, GTM, BigQuery, SQL i ekosystemu Google</li>
+      <li>Doświadczenie w UX/UI analytics</li>
+      <li>Doświadczenie we wdrożeniach ecommerce tracking</li>
+      <li>A/B testing i analiza zachowania użytkowników</li>
+      <li>Umiejętność przekładania danych na konkretne decyzje biznesowe</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="steps">
+  <div class="step">
+    <div class="step-num">01</div>
+    <div class="step-title">Rozmawiamy</div>
+  </div>
+  <div class="step">
+    <div class="step-num">02</div>
+    <div class="step-title">Diagnozujemy problem</div>
+  </div>
+  <div class="step">
+    <div class="step-num">03</div>
+    <div class="step-title">Dostajesz konkretne rozwiązanie</div>
+  </div>
+  <div class="step">
+    <div class="step-num">04</div>
+    <div class="step-title">Wdrażamy i mierzymy efekt</div>
+  </div>
+</div>
+
+
+<div class="who-grid">
+  <div class="who-card">
+    <h3>Ecommerce</h3>
+    <p>Chcesz lepiej rozumieć, gdzie tracisz klientów.</p>
+  </div>
+  <div class="who-card">
+    <h3>Marketing</h3>
+    <p>Potrzebujesz wiarygodnych danych do podejmowania decyzji.</p>
+  </div>
+  <div class="who-card">
+    <h3>Analityka</h3>
+    <p>Chcesz uporządkować tracking i pracować bardziej zaawansowanie z danymi.</p>
+  </div>
+  <div class="who-card">
+    <h3>Zespoły</h3>
+    <p>Potrzebujesz praktycznego szkolenia dopasowanego do realnych problemów firmy.</p>
+  </div>
+</div>
+
+
+  <div class="foot-col">
+    <h4>Oferta</h4>
+    <a href="#uslugi">Usługi</a>
+    <a href="#szkolenia">Szkolenia</a>
+    <a href="#konsultacje">Konsultacje</a>
+    <a href="#materialy">Materiały</a>
+  </div>
+
+  <div class="foot-col">
+    <h4>Marka</h4>
+    <a href="#o-mnie">O mnie</a>
+    <a href="#kontakt">Kontakt</a>
+  </div>
+
+  <div class="foot-col">
+    <h4>Kontakt</h4>
+    <a href="https://www.linkedin.com">LinkedIn</a>
+    <a href="mailto:kontakt@jsonsetka.pl">kontakt@jsonsetka.pl</a>
+  </div>
+
+  <div class="foot-col">
+    <h4>Informacje prawne</h4>
+    <span>Regulamin</span>
+    <span>Polityka prywatności</span>
+  </div>
+</div>
+
+<div class="foot-bottom">
+  <span>© 2026 json.setka. Wszystkie prawa zastrzeżone.</span>
+  <span>Kraków, Polska</span>
+</div>
