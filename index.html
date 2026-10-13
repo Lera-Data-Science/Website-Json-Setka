@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NBXWD8LM');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#242424">
@@ -732,6 +739,10 @@
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBXWD8LM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header>
   <div class="wrap navrow">
@@ -1277,6 +1288,7 @@
       transform: translateY(-1px);
     }
 
+    #mlb2-46907024 .ml-field-group{text-align:left !important;}
     .ml-error input, .ml-error textarea {
       border-color: #FF0055 !important;
     }
@@ -1291,27 +1303,27 @@
             <p data-i18n="form.p">Szukasz wsparcia w analityce, e-commerce lub optymalizacji UX? Wypełnij formularz – chętnie pomogę!</p>
           </div>
 
-          <form class="ml-block-form" action="https://assets.mlcdn.com/ml/1/46907024/subscribe" data-code="" method="post" target="_blank">
+          <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2696739/forms/200786180933945310/subscribe" data-code="" method="post" target="_blank">
             <div class="ml-form-formContent">
               
               <div class="ml-form-fieldRow">
-                <div class="ml-field-group ml-field-email">
-                  <label for="fields[email]" data-i18n="form.l1">Adres e-mail</label>
-                  <input type="email" class="form-control" name="fields[email]" data-i18n-ph="form.ph1" placeholder="jan@firma.pl" autocomplete="email" required>
+                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                  <label data-i18n="form.l1">Adres e-mail</label>
+                  <input type="email" class="form-control" name="fields[email]" aria-label="email" aria-required="true" data-i18n-ph="form.ph1" placeholder="jan@firma.pl" autocomplete="email">
                 </div>
               </div>
 
               <div class="ml-form-fieldRow">
-                <div class="ml-field-group ml-field-company">
-                  <label for="fields[company]" data-i18n="form.l2">Nazwa firmy / Strona WWW</label>
-                  <input type="text" class="form-control" name="fields[company]" data-i18n-ph="form.ph2" placeholder="np. mojadomena.pl">
+                <div class="ml-field-group ml-field-name">
+                  <label data-i18n="form.l2">Nazwa firmy / Strona WWW</label>
+                  <input type="text" class="form-control" name="fields[name]" aria-label="name" data-i18n-ph="form.ph2" placeholder="np. mojadomena.pl" autocomplete="organization">
                 </div>
               </div>
 
               <div class="ml-form-fieldRow ml-last-item">
-                <div class="ml-field-group ml-field-message">
-                  <label for="fields[message]" data-i18n="form.l3">W czym mogę Ci pomóc?</label>
-                  <textarea class="form-control" name="fields[message]" rows="4" data-i18n-ph="form.ph3" placeholder="Opisz swój projekt, cele lub wyzwania analityczne..." required></textarea>
+                <div class="ml-field-group ml-field-last_name">
+                  <label data-i18n="form.l3">W czym mogę Ci pomóc?</label>
+                  <textarea class="form-control" name="fields[last_name]" aria-label="last_name" rows="4" maxlength="1024" data-i18n-ph="form.ph3" placeholder="Opisz swój projekt, cele lub wyzwania analityczne..."></textarea>
                 </div>
               </div>
 
@@ -1325,6 +1337,7 @@
               </button>
             </div>
 
+            <input type="hidden" name="ml-submit" value="1">
             <input type="hidden" name="anticsrf" value="true">
           </form>
         </div>
@@ -1412,6 +1425,18 @@
     </div>
   </div>
 </footer>
+
+<script>
+  function ml_webform_success_46907024() {
+    var $ = window.ml_jQuery || window.jQuery;
+    $('.ml-subscribe-form-46907024 .row-success').show();
+    $('.ml-subscribe-form-46907024 .row-form').hide();
+  }
+</script>
+<script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
+<script>
+  fetch("https://assets.mailerlite.com/jsonp/2696739/forms/200786180933945310/takel").catch(function(){});
+</script>
 
 <script>
 (function(){
